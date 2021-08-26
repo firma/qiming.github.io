@@ -1,0 +1,110 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+      <!-- common.css -->
+      <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: -apple-system, Helvetica, Arial, sans-serif;margin: 0;padding: 20px;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;height: auto;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 90%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+      <!-- ace-static.css -->
+      <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+      <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+      <!-- export.css -->
+      <style>
+        body{margin:0 auto;max-width:800px;line-height:1.4}
+        #nav{margin:5px 0 10px;font-size:15px}
+        #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+        #contentarea{font-size:15px;margin:16px 0}
+        .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+        .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+        .latex-cell{white-space:pre-wrap;}
+      </style>
+      <!-- User CSS -->
+      <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+    </head>
+    <body>
+      
+      <div id="titlearea">
+        <h2>隱私政策</h2>
+      </div>
+      <div id="contentarea"><div class="cell markdown-cell">
+<blockquote>
+<p>杭州芽動科技有限公司（下文簡稱「芽動」、「我們」和「我們的」）深知隱私對您的重要性，並會尊重您的隱私。請在向我們提交個人數據之前，閱讀、了解本《隱私政策》（下文簡稱「本政策」）。本政策適用於顯示本隱私政策、或鏈接至本隱私政策的我們網站和產品、服務。</p>
+</blockquote>
+<p>本政策闡述了我們如何處理您的個人數據，但本政策可能並不涉及所有可能的數據處理情境。有關收集產品或服務特定數據的信息可能由杭州芽動在補充政策中，或者在收集數據時提供的通知中發布。</p>
+<p>我們制定本政策的目的在於幫助您了解以下內容：</p>
+<ul>
+<li>1.我們如何收集和使用您的個人數據</li>
+<li>2.我們如何使用 Cookie 和同類技術</li>
+<li>3.我們如何披露您的個人數據</li>
+<li>4.如何訪問或修改您的個人數據</li>
+<li>5.我們如何保護您的個人數據</li>
+<li>6.我們如何處理兒童的個人數據</li>
+<li>7.第三方提供商及其服務</li>
+<li>8.您的個人數據如何在互聯網範圍轉移</li>
+<li>9.本政策如何更新</li>
+<li>10.如何聯繫我們</li>
+</ul>
+<h3>1. 我們如何收集和使用您的個人數據</h3>
+<p>個人數據是指單獨使用或結合其他信息使用時能夠確定個人身份的信息。此類數據會在您使用我們的網站、產品或服務，以及與我們互動時由您直接提交給我們，例如，當您創建我們賬戶或聯繫我們獲得支持時；或者我們通過記錄您如何與我們的網站、產品或服務交互而獲得，例如，通過Cookie等技術，或者從您設備上運行的軟件接收使用數據。在法律允許的情況下，我們還會從公用和商用第三方來源獲取有關數據，例如，我們通過從其他公司購買統計數據來支持我們的服務。我們收集的數據取決於您與我們互動的方式，包括訪問的網站或者使用的產品和服務等，包括姓名、性別、企業名稱、職位、地址、電子郵箱、電話號碼、登錄信息（帳號和密碼）、照片、證件信息等。我們還收集您提供給我們的信息和您發給我們的消息內容，例如您輸入的查詢信息或您為了獲得客服支持而提供的問題或信息。 您在使用我們產品或服務時，可能需要提供您的個人數據。在某些情況下，您可以選擇不向我們提供個人數據，但如果您選擇不提供，我們可能無法為您提供相關產品或服務，也無法回應或解決您所遇到的問題。</p>
+<p>我們可能將您的個人數據用於以下目的：</p>
+<p>(a) 創建賬戶。</p>
+<p>(b) 實現您的交易或服務請求，包括履行訂單；交付、激活或驗證產品或服務；提供培訓及認證並管理和處理培訓及認證結果；參加線上或線下活動；應您的要求進行變更或者提供您請求的信息（例如產品或服務的營銷資料、白皮書）；以及提供技術支持。</p>
+<p>(c) 在您同意的情況下，與您聯繫；向您發送有關您可能感興趣的產品和服務的信息；邀請您參與我們活動（包括促銷活動）、市場調查或滿意度調查；或向您發送營銷信息。如果您不想接收此類信息，則可以隨時退訂。</p>
+<p>(d) 向您發送重要通知，如操作系統或應用程序更新和安裝的通知。</p>
+<p>(e) 為您提供個性化用戶體驗和個性化內容。</p>
+<p>(f) 認證和管理供應商及業務合作夥伴，與供應商及業務合作夥伴溝通或開展業務。</p>
+<p>(g) 開展內部審計、數據分析和研究，改善我們的產品和服務。</p>
+<p>(h) 分析業務運營效率並衡量市場份額。</p>
+<p>(i) 在您選擇向我們發送錯誤詳情的情況下排查錯誤。</p>
+<p>(j) 同步、共享和存儲您上傳或下載的數據以及執行上傳和下載所需的數據。</p>
+<p>(k) 保護我們產品、服務和客戶或用戶的安全，執行與改善我們的防損和反欺詐計劃。</p>
+<p>(l) 遵從和執行適用的法律要求，相關的行業標準或我們的政策。</p>
+<p>我們還可能收集和使用非識別性數據。非識別性數據是指無法用於確定個人身份的數據。例如，我們會收集匯總的統計數據，例如網站訪問量。我們收集此數據的目的在於了解用戶如何使用自己的網站、產品和服務。藉此，我們可以改善自己的服務，更好地滿足客戶需求。我們可能會自行決定出於其他目的收集、使用、處理、轉移或披露非識別性數據。 我們會盡力隔離您的個人數據和非識別性數據，並單獨使用這兩種數據。如果個人數據摻雜了非識別性數據，依舊會被視作個人數據處理。</p>
+<p>當我們處理您的個人數據時我們會遵從適用的法律的要求基於適當的合法性基礎予以處理，包括：</p>
+<p>當響應您的交易或服務請求時為履行合同處理您的個人數據；<br>
+基於您的同意處理您的個人數據；<br>
+當與您聯繫、進行營銷或市場調查，為改善我們的產品和服務，執行與改善我們的防損和反欺詐計劃等目的處理您的個人數據時我們將基於我們或第三方的合法利益。這些合法利益包括，使我們能夠更有效的管理和運營我們的業務並提供我們的產品和服務；保護我們的業務、系統、產品、服務和客戶的安全；內部管理，遵從內部的政策和流程；我們在本政策中描述的其他合法利益等；<br>
+我們還可能基於遵從和執行法律義務處理您的個人數據。</p>
+<h3>2. 我們如何使用 Cookie 和同類技術</h3>
+<h5>2.1 Cookie</h5>
+<p>為確保網站正常運轉，我們有時會在計算機或移動設備上存儲名為 Cookie 的小數據文件。Cookie 是一種網絡服務器存儲在計算機或移動設備上的純文本文件。Cookie 的內容只能由創建它的服務器檢索或讀取。每個 Cookie 對您的網絡瀏覽器或移動應用程序都是唯一的。Cookie 通常包含標識符、站點名稱以及一些號碼和字符。藉助於 Cookie，網站能夠存儲用戶偏好或購物籃內的商品等數據。</p>
+<p>我們啟用Cookie的目的與大多數網站或互聯網服務提供商啟用 Cookie 的目的一樣，即改善用戶體驗。藉助於 Cookie，網站能夠記住用戶的單次訪問（使用會話 Cookie）或多次訪問（使用永久 Cookie）。藉助於 Cookie，網站能夠保存設置，例如計算機或移動設備的語言、字體大小和其他瀏覽偏好。這意味着，用戶無需在每次訪問時重新配置用戶偏好設置。如果某個網站不使用 Cookie，那麼在用戶每一次打開網頁時，該網站都會將其視為新訪客。例如，如果您登錄某個網站後轉到另一個網頁，該網站就不會識別出您，而您會被再次註銷。 我們不會將 Cookie 用於本政策所述目的之外的任何用途。您可根據自己的偏好管理或刪除 Cookie。有關詳情，請參見 <a href="http://AboutCookies.org">AboutCookies.org</a>。您可以清除計算機上保存的所有 Cookie，大部分網絡瀏覽器都設有阻止 Cookie 的功能。但如果您這麼做，則需要在每一次訪問我們的網站時親自更改用戶設置。如需詳細了解如何更改瀏覽器設置，請訪問以下鏈接：</p>
+<p>Internet Explorer    Google Chrome    Mozilla Firefox    Safari    Opera</p>
+<h5>2.2 網站信標和像素標籤</h5>
+<p>除 Cookie 外，我們還會在網站上使用網站信標和像素標籤等其他同類技術。例如，我們向您發送的電子郵件可能含有鏈接至我們網站內容的點擊 URL。如果您點擊該鏈接，我們則會跟蹤此次點擊，幫助我們了解您的產品和服務偏好並改善客戶服務。網站信標通常是一種嵌入到網站或電子郵件中的透明圖像。藉助於電子郵件中的像素標籤，我們能夠獲知電子郵件是否被打開。如果您不希望自己的活動以這種方式被追蹤，則可以隨時從我們的寄信名單中退訂。</p>
+<p>您使用我們的網站意味着您同意按照如上所述使用Cookie，網站信標和像素標籤。</p>
+<h3>3. 我們如何披露您的個人數據</h3>
+<p>在某些服務由我們的授權合作夥伴提供的情況下，我們會如本政策描述與該合作夥伴共享您的個人數據。例如，在您上網購買我們產品時，我們必須與物流服務提供商共享您的個人數據才能安排送貨，或者安排合作夥伴提供服務。此外，作為互聯網公司，我們可能在我們的關聯公司間共享個人數據。</p>
+<p>在適用的法律要求或響應法律程序的情況下，我們也可能會向相關的執法機關或者其他政府機關披露您的個人數據。在某些管轄區，如果我們牽涉到重組、合併或破產和清理訴訟，那麼您的個人數據還可能會被披露給交易方。我們還會在存在合理需求的情況下披露您的數據，例如出於執行合同以及我們認為為阻止身體損害或財產損失或調查可能的或實際的非法行為有必要披露且披露是適當的。</p>
+<h3>4. 如何訪問或修改您的個人數據</h3>
+<p>您應確保提交的所有個人數據都準確無誤。我們會盡力維護個人數據的準確和完整，並及時更新這些數據。</p>
+<p>當適用的法律要求的情況下，您可能(1)有權訪問我們持有的關於您的特定的個人數據；(2)要求我們更新或更正您的不準確的個人數據；(3)拒絕或限制我們使用您的個人數據；以及(4)要求我們刪除您的個人數據。如果您想行使相關的權利，請點擊此處在線反饋給我們。為保障安全，您可能需要提供書面請求。如果我們有合理依據認為這些請求存在欺騙性、無法實行或損害他人隱私權，我們則會拒絕處理請求。</p>
+<p>當適用的法律要求的情況下，當我們基於您的同意處理您的個人數據時，您還有權隨時撤銷您的同意。但撤銷同意不會影響撤銷前我們基於您的同意處理您個人數據的合法性及效力，也不影響我們基於其他適當的正當性基礎處理您的個人數據。</p>
+<p>如果您認為我們對您的個人信息的處理不符合適用的數據保護法律，您可以與法定的數據保護機構聯繫。歐盟地區數據保護機構的聯繫方式請參考：<a href="http://ec.europa.eu/justice/article-29/structure/data-protection-authorities/index_en.htm">http://ec.europa.eu/justice/article-29/structure/data-protection-authorities/index_en.htm</a></p>
+<h3>5. 我們如何保護和留存您的個人數據</h3>
+<p>我們重視個人數據的安全。我們採用適當的物理、管理和技術保障措施來保護您的個人數據不被未經授權訪問、披露、使用、修改、損壞或丟失。例如，我們會使用加密技術確保數據的機密性；我們會使用保護機制防止數據遭到惡意攻擊；我們會部署訪問控制機制，確保只有授權人員才可訪問個人數據；以及我們會舉辦安全和隱私保護培訓課程，加強員工對於保護個人數據重要性的認識。我們會盡力保護您的個人數據，但是請注意任何安全措施都無法做到無懈可擊。</p>
+<p>我們將會在達成本政策所述目的所需的期限內保留您的個人數據，除非按照法律要求或許可需要延長保留期或受到法律的允許。因為基於不同的場景和產品及服務的不同，數據的存儲期可能會有所不同，我們用於確定存留期的標準包括：完成該業務目的需要留存個人數據的時間，包括提供產品和服務，維護相應的交易及業務記錄，管控並提升產品與服務性能與質量，保證系統、產品和服務的安全，應對可能的用戶查詢或投訴，問題定位等；用戶是否同意更長的留存期間；法律、合同等是否有保留數據的特殊要求等。只要您的賬戶是為您提供服務必須，我們都將保留您的註冊信息。您也可以選擇註銷您的賬號，在您註銷賬號後，我們會停止基於該賬號提供產品和服務，並在無特殊法律要求的情況下，刪除您相應的個人數據。</p>
+<h3>6. 我們如何處理兒童的個人數據</h3>
+<p>我們的產品、網站和服務主要面向成人。如果沒有父母或監護人的同意，兒童不得創建自己的用戶帳戶。對於經父母同意而收集兒童個人數據的情況，我們只會在受到法律允許、父母或監護人明確同意或者保護兒童所必要的情況下使用或披露此數據。 如果我們發現自己在未事先獲得可證實的父母同意的情況下收集了兒童的個人數據，則會設法儘快刪除相關數據。</p>
+<h3>7. 第三方提供商及其服務</h3>
+<p>為確保流暢的瀏覽體驗，您可能會收到來自我們及其合作夥伴外部的第三方（下文簡稱「第三方」）提供的內容或網絡鏈接。我們對此類第三方無控制權。您可選擇是否訪問第三方提供的鏈接、內容、產品和服務。<br>
+我們無法控制第三方的隱私和數據保護政策，此類第三方不受到本政策的約束。在向第三方提交個人信息之前，請參見這些第三方的隱私保護政策。</p>
+<ul>
+<li>我們的產品集成友盟+SDK，友盟+SDK需要收集您的設備Mac地址、唯一設備識別碼（IMEI/android ID/IDFA/OPENUDID/IP地址/GUID、SIM 卡 IMSI 信息）以提供統計分析服務，並通過地理位置校準報表數據準確性，提供基礎反作弊能力。</li>
+</ul>
+<h3>8. 您的個人數據如何在互聯網範圍轉移</h3>
+<p>我們是一家互聯網公司，這意味着，我們收集的您的個人數據可能會在您使用產品或服務所在國家/地區、在我們或其關聯公司、子公司或服務提供商、業務合作夥伴設有機構的其他國家/地區進行處理，或者受到來自這些國家/地區的訪問。這些國家/地區的數據保護法可能不同。在此類情況下，我們會採取措施確保我們收集的數據依據本政策和適用法律的要求進行處理。包括當位於歐盟的數據主體的個人數據被轉移至不被歐盟認可的同等數據保護水平國家或地區時，我們會使用各種法律機制，如簽署歐盟委員會批准的標準合同條款或請求您對跨境轉移個人數據的同意，或者在跨境數據轉移之前實施數據匿名等安全舉措。您可以通過點擊此處獲取歐盟標準合同條款的副本。</p>
+<h3>9. 本政策如何更新</h3>
+<p>我們保留不時更新或修改本政策的權利。如果我們的隱私政策變更，我們會將最新版隱私政策發布在這裡。如果我們對隱私政策做出了重大變更，我們還可能會通過不同渠道向您發送變更通知，例如，在我們的網站上發布通知或者向您發布單獨的通知。</p>
+<h3>10. 如何聯繫我們</h3>
+<p>如果您有任何隱私投訴或問題要聯繫我們數據保護官<br>
+Email： <strong><a href="mailto:hzyadong003@163.com">hzyadong003@163.com</a></strong></p>
+<p>當我們按照本隱私政策處理您的個人數據時，響應您的請求、與您聯繫、向您提供產品或服務或與您達成或即將達成合同的我們實體是相關個人數據的控制者。</p>
+<p>最近更新日期：2021 年 5 月</p>
+</div></div>
+      <script></script>
+    </body>
+    </html>
+  

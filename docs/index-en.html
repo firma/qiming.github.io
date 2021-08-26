@@ -1,0 +1,334 @@
+
+    <!DOCTYPE html>
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- common.css -->
+      <style>* {-webkit-tap-highlight-color: rgba(0,0,0,0);}html {-webkit-text-size-adjust: none;}body {font-family: -apple-system, Helvetica, Arial, sans-serif;margin: 0;padding: 20px;color: #333;word-wrap: break-word;}h1, h2, h3, h4, h5, h6 {line-height: 1.1;}img {max-width: 100% !important;height: auto;}blockquote {margin: 0;padding: 0 15px;color: #777;border-left: 4px solid #ddd;}hr {background-color: #ddd;border: 0;height: 1px;margin: 15px 0;}code {font-family: Menlo, Consolas, 'Ubuntu Mono', Monaco, 'source-code-pro', monospace;line-height: 1.4;margin: 0;padding: 0.2em 0;font-size: 90%;background-color: rgba(0,0,0,0.04);border-radius: 3px;}pre > code {margin: 0;padding: 0;font-size: 100%;word-break: normal;background: transparent;border: 0;}ol {list-style-type: decimal;}ol ol, ul ol {list-style-type: lower-latin;}ol ol ol, ul ol ol, ul ul ol, ol ul ol {list-style-type: lower-roman;}table {border-spacing: 0;border-collapse: collapse;margin-top: 0;margin-bottom: 16px;}table th {font-weight: bold;}table th, table td {padding: 6px 13px;border: 1px solid #ddd;}table tr {border-top: 1px solid #ccc;}table tr:nth-child(even) {background-color: #f8f8f8;}input[type="checkbox"] {cursor: default;margin-right: 0.5em;font-size: 13px;}.task-list-item {list-style-type: none;}.task-list-item+.task-list-item {margin-top: 3px;}.task-list-item input {float: left;margin: 0.3em 1em 0.25em -1.6em;vertical-align: middle;}#tag-field {margin: 8px 2px 10px;}#tag-field .tag {display: inline-block;background: #cadff3;border-radius: 4px;padding: 1px 8px;color: black;font-size: 12px;margin-right: 10px;line-height: 1.4;}</style>
+      <!-- ace-static.css -->
+      <style>.ace_static_highlight {white-space: pre-wrap;}.ace_static_highlight .ace_gutter {width: 2em;text-align: right;padding: 0 3px 0 0;margin-right: 3px;}.ace_static_highlight.ace_show_gutter > .ace_line {padding-left: 2.6em;}.ace_static_highlight .ace_line {position: relative;}.ace_static_highlight .ace_gutter-cell {-moz-user-select: -moz-none;-khtml-user-select: none;-webkit-user-select: none;user-select: none;top: 0;bottom: 0;left: 0;position: absolute;}.ace_static_highlight .ace_gutter-cell:before {content: counter(ace_line, decimal);counter-increment: ace_line;}.ace_static_highlight {counter-reset: ace_line;}</style>
+      <style>.ace-chrome .ace_gutter {background: #ebebeb;color: #333;overflow : hidden;}.ace-chrome .ace_print-margin {width: 1px;background: #e8e8e8;}.ace-chrome {background-color: #FFFFFF;color: black;}.ace-chrome .ace_cursor {color: black;}.ace-chrome .ace_invisible {color: rgb(191, 191, 191);}.ace-chrome .ace_constant.ace_buildin {color: rgb(88, 72, 246);}.ace-chrome .ace_constant.ace_language {color: rgb(88, 92, 246);}.ace-chrome .ace_constant.ace_library {color: rgb(6, 150, 14);}.ace-chrome .ace_invalid {background-color: rgb(153, 0, 0);color: white;}.ace-chrome .ace_fold {}.ace-chrome .ace_support.ace_function {color: rgb(60, 76, 114);}.ace-chrome .ace_support.ace_constant {color: rgb(6, 150, 14);}.ace-chrome .ace_support.ace_type,.ace-chrome .ace_support.ace_class.ace-chrome .ace_support.ace_other {color: rgb(109, 121, 222);}.ace-chrome .ace_variable.ace_parameter {font-style:italic;color:#FD971F;}.ace-chrome .ace_keyword.ace_operator {color: rgb(104, 118, 135);}.ace-chrome .ace_comment {color: #236e24;}.ace-chrome .ace_comment.ace_doc {color: #236e24;}.ace-chrome .ace_comment.ace_doc.ace_tag {color: #236e24;}.ace-chrome .ace_constant.ace_numeric {color: rgb(0, 0, 205);}.ace-chrome .ace_variable {color: rgb(49, 132, 149);}.ace-chrome .ace_xml-pe {color: rgb(104, 104, 91);}.ace-chrome .ace_entity.ace_name.ace_function {color: #0000A2;}.ace-chrome .ace_heading {color: rgb(12, 7, 255);}.ace-chrome .ace_list {color:rgb(185, 6, 144);}.ace-chrome .ace_marker-layer .ace_selection {background: rgb(181, 213, 255);}.ace-chrome .ace_marker-layer .ace_step {background: rgb(252, 255, 0);}.ace-chrome .ace_marker-layer .ace_stack {background: rgb(164, 229, 101);}.ace-chrome .ace_marker-layer .ace_bracket {margin: -1px 0 0 -1px;border: 1px solid rgb(192, 192, 192);}.ace-chrome .ace_marker-layer .ace_active-line {background: rgba(0, 0, 0, 0.07);}.ace-chrome .ace_gutter-active-line {background-color : #dcdcdc;}.ace-chrome .ace_marker-layer .ace_selected-word {background: rgb(250, 250, 255);border: 1px solid rgb(200, 200, 250);}.ace-chrome .ace_storage,.ace-chrome .ace_keyword,.ace-chrome .ace_meta.ace_tag {color: rgb(147, 15, 128);}.ace-chrome .ace_string.ace_regex {color: rgb(255, 0, 0)}.ace-chrome .ace_string {color: #1A1AA6;}.ace-chrome .ace_entity.ace_other.ace_attribute-name {color: #994409;}.ace-chrome .ace_indent-guide {background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAACCAYAAACZgbYnAAAAE0lEQVQImWP4////f4bLly//BwAmVgd1/w11/gAAAABJRU5ErkJggg==") right repeat-y;}</style>
+      <!-- export.css -->
+      <style>
+        body{margin:0 auto;max-width:800px;line-height:1.4}
+        #nav{margin:5px 0 10px;font-size:15px}
+        #titlearea{border-bottom:1px solid #ccc;font-size:17px;padding:10px 0;}
+        #contentarea{font-size:15px;margin:16px 0}
+        .cell{outline:0;min-height:20px;margin:5px 0;padding:5px 0;}
+        .code-cell{font-family:Menlo,Consolas,'Ubuntu Mono',Monaco,'source-code-pro',monospace;font-size:12px;}
+        .latex-cell{white-space:pre-wrap;}
+      </style>
+      <!-- User CSS -->
+      <style> .text-cell {font-size: 15px;}.code-cell {font-size: 12px;}.markdown-cell {font-size: 15px;}.latex-cell {font-size: 15px;}</style>
+    </head>
+    <body>
+      
+      <div id="titlearea">
+        <h2><center>User Agreement</center></h2>
+      </div>
+      <div id="contentarea"><div class="cell markdown-cell"><h2></h2>
+<h4>1. Special tips</h4>
+<ul>
+<li>
+<p>1.1<br>
+The naming operator agrees to provide users with naming services in accordance with the provisions of this agreement and the operating rules issued from time to time. In order to obtain the naming service, the user of the naming service (hereinafter referred to as the "user") must approve and agree to all the terms of this agreement (especially the terms in bold) and follow the page on the basis of careful reading and independent thinking. The prompts on the completion of all registration procedures. When the user clicks the "Agree" button during the registration process (or actually uses the naming service), it means that the user fully accepts this service agreement and the Sina network service usage agreement, the naming community convention, the naming business conduct rules, the naming report and complaint operation rules and naming Various rules and regulations announced by the operator. If the user has any objection to this service agreement or any part of the agreement, the registration procedure should be terminated (or the name service should be stopped). </p>
+</li>
+<li>
+<p>1.2<br>
+After the user is successfully registered, the naming operator will open the naming service in accordance with the account provided by the registration requirements when applying for and registering the naming service based on the objective needs of using the naming service. The user has the right to open the naming service for him and agree to The named service is used on the basis of the service provided. At the same time, the user agrees:</p>
+</li>
+<li>
+<p>1.2.1<br>
+The user should properly keep the name account and password. </p>
+</li>
+<li>
+<p>1.2.2<br>
+Without the consent of the named operator, users are not allowed to buy, sell, transfer, or rent any named account or named nickname without authorization. </p>
+</li>
+<li>
+<p>1.2.3<br>
+In the process of using the naming service, the user must take full responsibility for his own use of the naming service, any information released and disclosed by the user through the naming service, and any consequences arising therefrom. </p>
+</li>
+<li>
+<p>1.2.4<br>
+Through the setting function, users can confirm and control the disclosure method and visible range of the information submitted, published or displayed in the process of using the naming service. </p>
+</li>
+<li>
+<p>1.3<br>
+In the process of using the naming service, the user enjoys the legal rights and assumes corresponding legal responsibilities for his own use of the naming service and any information published and disclosed through the naming service. At the same time, the user agrees:</p>
+<ul>
+<li>1.3.1<br>
+The naming operator has the right to use the naming content (the naming content refers to the information that the user has published on the naming, such as text, pictures, video, audio, etc.). </li>
+<li>1.3.2<br>
+Without the prior written permission of the named operator, the user shall not, on his own or authorize, assist any third party in illegally grabbing the named content. "Illegal grabbing" refers to the behavior of obtaining content data through technical means such as programs or abnormal browsing. </li>
+</ul>
+</li>
+<li>
+<p>1.4<br>
+The user shall strictly abide by the Robots agreement issued by the named operator when using the named service. <br>
+Without the prior written consent of the named operator, any user shall not, in any way, by himself or by entrusting any third party to access the named platform or collect any named content in a manner that violates the above regulations. </p>
+</li>
+<li>
+<p>1.5<br>
+To the extent permitted by laws and regulations, the user agrees and authorizes the named operator to take any form of legal action for infringement of the user’s legal rights and interests (including but not limited to unauthorized copying, use, editing, plagiarism, etc.), including but not limited to complaints , Litigation and other necessary rights protection measures. </p>
+</li>
+<li>
+<p>1.6<br>
+The named operator has the right to directly entrust the service or the rights and obligations under this agreement to its affiliates or other third-party companies for operation, management and performance, and the named operator does not need to obtain separate authorization from the user for this. The naming operator will do its best to avoid the inconvenience caused by the aforementioned entrustment or change to the user's use of the naming service, and the naming operator will try its best to notify in a timely manner through websites, platforms, private messages, emails, etc. In this agreement, an affiliated company refers to any enterprise that controls or is controlled by a party, or is jointly controlled by the same entity with a party. Control refers to directly or indirectly owning more than fifty percent (50%) of the equity, voting rights, or management rights of the enterprise. </p>
+</li>
+<li>
+<p>1.7<br>
+In order to improve the user's experience and satisfaction with the naming service, the user agrees that the naming operator can conduct investigations, research and analysis on user data, so as to further optimize the naming service. </p>
+</li>
+</ul>
+<h4>2. Service content</h4>
+<ul>
+
+<li>2.1<br>
+The specific content of the naming service is provided by the naming operator according to the actual situation, including but not limited to the user's use of the naming service to post opinions, comments, pictures, videos, forwarding links, long naming, etc. The naming operator has the right to provide services or products to it The form is upgraded or other adjustments, and the page will be updated/notified to users in time. </li>
+<li>2.2<br>
+Part of the naming service provided by the naming operator is a fee-based network service, and users need to pay a certain fee to the naming operator to use the fee-based network service. For charged network services, the named operator will give the user a clear reminder before the user uses it. Only when the user confirms that he is willing to pay the relevant fee according to the prompt, the user can use the charged network service. If the user refuses to pay the relevant fees, the named operator has the right not to provide the user with such charged network services. </li>
+<li>2.3<br>
+The user understands that the naming operator only provides technical services related to the naming service, in addition to equipment related to related network services (such as personal computers, mobile phones, and other devices related to access to the Internet or mobile network) and required The expenses (such as the telephone and Internet fees paid for accessing the Internet, and the mobile phone fees paid for using the mobile network) are all borne by the user. </li>
+</ul>
+<h4>3. Service change, interruption or termination</h4>
+<ul>
+<li>3.1<br>
+In view of the particularity of network services (including but not limited to server stability problems, malicious network attacks and other circumstances beyond the control of the named operator), the user agrees that the named operator has the right to interrupt or terminate part or all of it at any time Named services (including fee-based network services), if such circumstances occur, the naming operator will as soon as possible notify the affected users through web announcements, system notifications, private messages, SMS reminders or other reasonable methods. </li>
+<li>3.2<br>
+The user understands that the naming operator needs to regularly or irregularly overhaul or maintain the platforms (such as Internet websites, applications, etc.) or related equipment that provide naming services. If such circumstances cause service interruption within a reasonable time, The named operator does not need to bear any responsibility for this, but the named operator should make advance notice as much as possible. </li>
+<li>3.3<br>
+In the event of any of the following situations, the named operator has the right to suspend or terminate the provision of named services (including fee-based services and free services) to users under this agreement at any time without any liability to the user or any third party, resulting in The loss shall be borne by the user independently:
+<ul>
+<li>3.3.1<br>
+The personal information provided by the user is not true;</li>
+<li>3.3.2<br>
+The user violates laws, regulations, national policies or usage rules stipulated in this agreement;</li>
+<li>3.3.3<br>
+When using the paid service, the user fails to pay the relevant service fee for the charged service used by the user according to the regulations;</li>
+<li>3.3.4<br>
+Users infringe on the legitimate rights and interests of individuals, enterprises, institutions, or social organizations, including but not limited to patent rights, copyrights, trademark rights, or name rights, name rights, reputation rights, honor rights, portrait rights, privacy rights, etc.;</li>
+<li>3.3.5<br>
+Users damage the image of regulatory agencies, state agencies, and governments;</li>
+<li>3.3.6<br>
+The user damages the legitimate rights and interests such as the goodwill or reputation of the named operator and its affiliates in any way;</li>
+<li>3.3.7<br>
+The naming operator has other reasonable reasons to believe that it is necessary to suspend or terminate the provision of naming services to users. </li>
+</ul>
+</li>
+<li>3.4<br>
+If the user does not actually use the naming service for any consecutive 90 days after applying for the naming service, the naming operator has the right to choose any of the following methods within the scope permitted by laws and regulations:
+<ul>
+<li>3.4.1<br>
+Reclaim user nickname;</li>
+<li>3.4.2<br>
+Reclaim user account;</li>
+<li>3.4.3<br>
+Stop providing naming services for this user. </li>
+</ul>
+</li>
+<li>3.5<br>
+If the user chooses to bind the named account with a third-party account that the named operator cooperates with, in addition to the user's own unbinding relationship, if any of the following situations occurs, the user's bound third-party account may also be unbound , The named operator does not need to bear any responsibility for the user or any third party:
+<ul>
+<li>3.5.1<br>
+The user violates laws, regulations, national policies and this agreement;</li>
+<li>3.5.2<br>
+The user violates the third-party user agreement or related regulations;</li>
+<li>3.5.3</li>
+<li>The site to which the third-party account belongs requires unbinding;</li>
+<li>3.5.4<br>
+The platform or business to which the third-party account belongs has been shut down;</li>
+<li>3.5.5<br>
+According to laws, regulations, national policies or requirements of competent authorities;</li>
+<li>3.5.6<br>
+The named operator has reasonable grounds to believe that the binding needs to be unbound. </li>
+</ul>
+</li>
+</ul>
+
+<h4>4. Rules of use</h4>
+<ul>
+<li>4.1<br>
+Users can edit the account name, nickname, avatar, profile, etc. (hereinafter referred to as "account information") in the registration information by themselves, but they should abide by relevant laws and regulations and must not contain illegal or harmful information. <br>
+When users register for a named account, make, publish, and disseminate information content, they shall use real identity information and personal information, and shall not register with false or fraudulent resident identity information or enterprise-related information; if there is any change in the user’s personal information, the user Should be updated in time. <br>
+Without the authorization of the relevant right holder, users shall not register a named account in the name of another person or other organization, or use misleading information to register a named account, including but not limited to making people mistakenly believe that the account is associated with other individuals or organizations The name, avatar or profile of the relationship, etc. </li>
+<li>4.2<br>
+News media and government agencies that open a named account shall, in addition to using the named service as agreed in this agreement, also comply with relevant laws, regulations, organizational rules, and regulatory requirements.
+<ul>
+<li>4.2.1<br>
+A media account refers to an institutional authentication account opened by a news unit with statutory news qualifications in the name. Media accounts shall accept unified management by the competent news department and the cyberspace administration when using the naming service. </li>
+<li>4.2.2<br>
+Government accounts refer to institutional authentication accounts opened by party and government agencies, democratic parties, and people's organizations at all levels. When using the naming service, the government account shall accept the unified management of the cybersecurity and informatization department, and shall be managed in accordance with its own responsibilities, articles of association, and management requirements of higher-level units. </li>
+</ul>
+</li>
+<li>4.3<br>
+The user understands and agrees that the following information cannot be changed once submitted by the user for confirmation. The loss and consequences caused by content defects (including but not limited to errors, incompleteness, dissatisfaction, etc.) shall be borne by the user independently:
+<ul>
+<li>4.3.1<br>
+Name your account and your personalized domain name;</li>
+<li>4.3.2<br>
+The account information that cannot be modified after the name is determined by the operator. </li>
+</ul>
+</li>
+<li>4.4<br>
+The named operator will establish a sound user information security management system and implement technical security prevention and control measures. The naming operator will protect the privacy of users involved in the process of using the naming service. <br>
+Regarding the named content published or stored by the user in the naming process, the naming operator recommends that the user make a backup from time to time. The user understands and agrees that if the user voluntarily stops using the naming service or the naming service is terminated or cancelled by using the account cancellation function, the naming operator cannot return or provide any data to the user. </li>
+<li>4.5<br>
+In order to maintain the stable operation of the named platform and ensure the quality of user experience, without the prior written permission of the named operator, no one may implement automated actions or publish spam on the named platform without authorization.
+<ul>
+<li>4.5.1<br>
+Automated behavior refers to users who, without the consent of the named operator, use automated means by themselves or with authorization, assist a third party to use automated means, or are significantly different from ordinary users, and post naming, comments, private messages, headline articles, or making concerns, much higher than the frequency of normal users. Like, grab data, etc. </li>
+<li>4.5.2<br>
+Spam refers to the unauthorized use of named accounts (including named accounts registered in batches through cheating, common named accounts, etc.) in naming, comments, private messages, account information, headlines, and group chat content without the consent of the named operator Marketing information, meaningless information or information about buying and selling fans. <br>
+The user knows and agrees that the named operator has the right to determine whether the behavior of the user account constitutes an automated behavior and whether the information published by the user account is spam in accordance with the technical rules through detection and verification, and take relevant measures to deal with it. All data and information (including but not limited to account operation records, naming content, re-comments, etc.) on which the processing measures are based are subject to the background records of the naming platform. </li>
+</ul>
+</li>
+<li>4.6<br>
+Since the premise of the naming service is the account provided by the user in the process of applying for the naming service, the user should not transfer or lend his account and password to others. If users find that their account or naming service is illegally used by others, they should immediately notify the naming operator. If the account, password, and naming service are illegally used by others due to hacking or negligence of the user's custody and other reasons other than the named operator, the user shall bear the relevant responsibilities. </li>
+<li>4.7<br>
+The user agrees that the naming operator will place various commercial advertisements or any other types of commercial information in various ways in the process of providing naming services (including but not limited to placing advertisements on any page of the naming platform website), and the user agrees to accept The named operator sends product promotions or other relevant commercial information to users via email, private message or other means. </li>
+<li>4.8<br>
+In order to better promote information sharing and promotion, the user authorizes the named operator to use the named content on the named and related products and services, and license the above-mentioned content to third parties for the purpose of promotion. The aforementioned authorization by the user to the named operator and its affiliates does not change the ownership and intellectual property rights of the user's published content, nor does it affect the user's exercise of his legal rights to the published content. </li>
+<li>4.9<br>
+In the process of using the named service, users should speak in a civilized manner, and respect the personal rights of other users in accordance with the law, such as personal rights and identity rights, and jointly establish a harmonious, civilized, and polite network social environment. </li>
+<li>4.10<br>
+In the process of using the named service, the user must follow the following principles:
+<ul>
+<li>4.10.1<br>
+Must not violate the laws and regulations of the People's Republic of China and relevant international treaties or rules;</li>
+<li>4.10.2<br>
+Do not violate network agreements, regulations, procedures and industry rules related to network services and naming services;</li>
+<li>4.10.3<br>
+Do not engage in any behavior that may adversely affect the normal operation of the Internet or mobile network;</li>
+<li>4.10.4<br>
+Do not upload, display or disseminate any false, false, pretending, harassing, slanderous, offensive, abusive, intimidating, racially discriminatory, slanderous, slanderous, privacy leaking, pornographic, obscene, malicious Plagiarism, violence, blood, suicide, self-harm, or any other illegal information materials;</li>
+<li>4.10.5<br>
+Do not infringe the legitimate rights and interests of any individual, enterprise, institution, or social organization, including but not limited to patent rights, copyrights, trademark rights, or name rights, name rights, reputation rights, honor rights, portrait rights, privacy rights, etc.;</li >
+<li>4.10.6<br>
+Do not damage the image of state agencies and governments at all levels in any way;</li>
+<li>4.10.7<br>
+Do not in any way damage the legitimate rights and interests of the named operator and its affiliates, such as the goodwill or reputation;</li>
+<li>4.10.8<br>
+Do not engage in any other behavior that affects the normal operation of the naming operator, destroys the naming business model or other harmful naming ecology;</li>
+<li>4.10.9<br>
+Do not use the naming service for any other illegal purposes. </li>
+</ul>
+</li>
+<li>4.11<br>
+Regarding the rules and instructions for the use of certain specific naming services, any statement, notification, warning, etc. made by the naming operator through various methods (including but not limited to web announcements, system notifications, private messages, SMS reminders, etc.) shall be deemed As part of this agreement, if the user uses such named services, it is deemed that the user agrees to the content of such statements, notices, and warnings. </li>
+<li>4.12<br>
+The naming operator has the right to review, supervise and process the behavior and information of the user using the naming service, including but not limited to user information (account information, personal information, etc.), posting content (location, text, image, audio, video, trademark) , Patents, publications, etc.), user behavior (building relationships, @信息, comments, private messages, participating in topics, participating in activities, publishing marketing information, reporting complaints, etc.). </li>
+<li>4.13<br>
+If the user finds that other users upload illegal and infringement content while using the naming service, the user can directly click the "Report" button to report, and the relevant personnel will verify and deal with it as soon as possible; if it involves name rights, name rights, reputation rights, and honors For the handling of personal rights, rights, portrait rights, privacy rights, and other personal rights disputes, users can deal with them in accordance with relevant laws and regulations and with reference to the methods disclosed in the named announcement; if the user believes that the above methods cannot solve the problem encountered, or the user feels it is necessary to If the judicial administrative agency seeks help, the user can give feedback to the relevant agency as soon as possible, and the named operator will cooperate in the investigation and evidence collection work of the judicial agency in accordance with the law. </li>
+</ul>
+<h4>5. Intellectual Property</h4>
+<ul>
+<li>5.1<br>
+The named operator is the owner of the ownership and intellectual property rights of the named platform and named products. </li>
+<li>5.2<br>
+The above-mentioned named products refer to those provided by the named operator, the named operator's affiliates, or its authorized subject to users through the named platform, including but not limited to information publishing and sharing, relationship chain expansion, convenient auxiliary tools, platform applications, and public opening Platform and other functions, software, services, etc. </li>
+<li>5.3<br>
+The named operator is the owner of the ownership and intellectual property rights of all information content in the named platform and named products. The foregoing information content includes but is not limited to program code, interface design, layout framework, data information, account number, text, pictures, graphics, charts, audio, video, etc., except for content that should be enjoyed by relevant right holders in accordance with laws and regulations. </li>
+<li>5.4<br>
+In the process of using the named platform, the user may use the functions, software or services that are developed by a third party to run on the named platform. In addition to complying with the relevant provisions of this agreement, the user shall also comply with the relevant regulations of the third party and respect the third party Right holders have related rights to their functions, software, services, and the content contained therein. </li>
+<li>5.5<br>
+In view of the above, the user understands and agrees:
+<ul>
+<li>5.5.1<br>
+Without the consent of the named operator and relevant right holders, users are not allowed to reverse engineer, decompile, or disassemble the above functions, software, and services; at the same time, the above content or The materials are directly or indirectly published, broadcast, rewritten or redistributed for broadcast or publication purposes in any media, or used for any other purpose;</li>
+<li>5.5.2<br>
+On the premise of making commercially reasonable efforts, the named operator will not in any way provide users with any delays, inaccuracies, errors, omissions, or any damages resulting from the above-mentioned functions, software, services and the content contained therein. Or any third party bears any responsibility;</li>
+<li>5.5.3<br>
+The named operator does not make any guarantee or joint commitment or guarantee for any of the above-mentioned functions, software, services or content provided by third parties. Any disputes, disputes or damages arising therefrom shall be the responsibility of the user and the third party. To resolve, the named operator does not bear any responsibility;</li>
+<li>5.5.4<br>
+In order to better maintain the naming ecology, the naming operator reserves the right to dispose of the above-mentioned products or content that the naming operator enjoys the ownership and intellectual property rights in any way at any time, including but not limited to revision, blocking, deletion or any other laws and regulations. Disposal method. </li>
+</ul>
+</li>
+</ul>
+<h4>6. Privacy protection</h4>
+<ul>
+<li>6.1<br>
+The protection of user privacy and other personal information is a basic policy of naming. For details, please refer to the relevant protection policy of naming personal information. </li>
+</ul>
+<h4>7. Disclaimer</h4>
+<ul>
+<li>7.1<br>
+Users should abide by national laws, regulations and policies when using the named service, and the consequences of their use of the named service shall be borne by the user. </li>
+<li>7.2<br>
+Any information released by the user through the naming service, and any opinions transmitted through the naming service do not represent the position of the naming, and naming is not responsible for its completeness, authenticity, accuracy or reliability. Users should make their own judgments about illegal, unethical, erroneous, or other inappropriate information that may be exposed in the name, and misclassified or deceptive posting content. In any case, any loss or injury caused by the aforementioned improper information shall be fully responsible by the relevant actors. </li>
+<li>7.3<br>
+Since the content of the web pages pointed to by external links is not under the actual control of the named operator, the named operator cannot guarantee the accuracy and completeness of the external links set up for the convenience of users. </li>
+<li>7.4<br>
+The named operator shall not bear any responsibility for the interruption of the named service or other defects caused by force majeure or reasons beyond the control of the named operator, but will try to reduce the loss and impact caused to the user. </li>
+<li>7.5<br>
+Named operators shall bear relevant responsibilities for the named products and services they provide to users in accordance with the law, unless otherwise stipulated by law or agreed otherwise. </li>
+<li>7.6<br>
+The user knows and agrees that the named operator may cooperate with a third party to provide users with products (including but not limited to games, third-party applications, etc.), and the third party will provide users with follow-up work such as product upgrades, maintenance, and customer service. These third parties are responsible for all disputes or user losses caused by the quality of the product or its own reasons, and the user hereby agrees to claim all rights and losses related to this to the third party. </li>
+<li>7.7<br>
+Unless otherwise agreed, the product or service provided by the named operator (including but not limited to game items and props), if the period of use is not indicated, or the period of use indicated is "permanent", "indefinite" or "unlimited" ”, the period of use is from the user’s use of the product or service to the day when the product or service goes offline. </li>
+</ul>
+<h4>8. Liability for breach of contract</h4>
+<ul>
+<li>8.1<br>
+If the named operator violates relevant laws, regulations or any clauses under this agreement and causes losses to the user, the liability for damages caused to the user shall be borne by the named operator. </li>
+<li>8.2<br>
+The user agrees to protect and maintain the legitimate rights and interests of the named operator and its affiliates and other users. If the user violates relevant laws, regulations or any terms under this agreement, the named operator and its affiliates or any other third parties In the event of loss, the user agrees to bear the liability for damages caused thereby. </li>
+<li>8.3<br>
+If the named operator discovers or receives a third-party report or complaint that the user exists or is suspected of violating Article 1 (special reminder) or Article 4 (rules of use) of this agreement, the named operator or its authorized subject has the right to rely on it Its reasonable judgment will immediately take all necessary measures without notice to reduce or eliminate the impact of user behavior, and will notify users after handling as much as possible. The resulting losses and consequences (including but not limited to missed promotion opportunities, loss of marketing revenue, etc.) shall be borne by the user independently. </li>
+<li>8.4<br>
+Except as otherwise agreed in this agreement, if the named operator discovers or receives a third-party report or complaint that the user has or is suspected of violating the obligations, guarantees, commitments or other terms agreed in this agreement, the user shall specify the time limit within the named operator If the user does not correct within the aforementioned time limit, the named operator or its authorized subject has the right to take all necessary measures immediately based on its reasonable judgment to reduce or eliminate the impact caused by the user’s behavior. The user is notified after processing. The resulting losses and consequences (including but not limited to missed promotion opportunities, loss of marketing revenue, etc.) shall be borne by the user independently. </li>
+<li>8.5<br>
+The "all necessary measures" mentioned in 8.3 and 8.4 of this agreement include but are not limited to one or more of the following:
+<ul>
+<li>8.5.1<br>
+Change, delete or block related content;</li>
+<li>8.5.2<br>
+Warn against illegal accounts and account bans;</li>
+<li>8.5.3<br>
+Freeze user account funds to make up for the losses caused by the user to the named operator, its affiliates, and others;</li>
+<li>8.5.4<br>
+Change, restrict or prohibit part or all of the functions of the illegal account;</li>
+<li>8.5.5<br>
+Suspend, restrict or terminate the user's right to use the named service, cancel the user account, etc.;</li>
+<li>8.5.6<br>
+Report to relevant regulatory agencies or state agencies;</li>
+<li>8.5.7<br>
+Other measures deemed reasonable by the named operator. </li>
+</ul>
+</li>
+</ul>
+<h4>9. Agreement modification</h4>
+<ul>
+<li>9.1<br>
+The named operator has the right to modify any clause of this agreement at any time. Once the content of this agreement changes, the named operator will publish the modified agreement content on the named platform, and the named operator can also choose to use other appropriate methods (such as system Notification) Notify the user of the modified content. </li>
+<li>9.2<br>
+If you do not agree with the naming operator's amendments to the relevant terms of this agreement, the user has the right to stop using the naming service. If the user continues to use the named service, it shall be deemed that the user accepts the modification of the relevant terms of this agreement made by the named operator. </li>
+</ul>
+<h4>10. Notification delivery</h4>
+<ul>
+<li>10.1<br>
+The named operator under this agreement can make all notifications to users through web announcements, emails, system notifications, proactive contact with named management accounts, private messages, mobile phone text messages or regular mail transmission; such notifications are sent on the day of sending. It is deemed to have been delivered to the recipient. </li>
+<li>10.2<br>
+The user's notice to the named operator shall be delivered through the contact information such as the correspondence address, fax number, and e-mail address officially announced by the named operator. </li>
+</ul>
+<h4>11. Applicable law</h4>
+<ul>
+<li>11.1<br>
+The conclusion, execution and interpretation of this agreement and dispute resolution shall be governed by the laws of the Mainland of the People’s Republic of China. </li>
+<li>11.2<br>
+If there is any dispute between the two parties regarding the content of this agreement or its implementation, the two parties shall try their best to resolve it through friendly negotiation; if the negotiation fails, either party may bring a lawsuit to the People's Court of Haidian District, Beijing. </li>
+</ul>
+<h4>12. Other regulations</h4>
+<ul>
+<li>12.1<br>
+If any clause in this agreement is completely or partially invalid or not enforceable for any reason, the remaining clauses in this agreement shall still be valid and binding. </li>
+<li>12.2<br>
+The title in this agreement is for convenience only and should be ignored when interpreting this agreement, and cannot be used as the basis for the interpretation of the terms of this agreement. </li>
+</ul>
+</div></div>
+      <script></script>
+    </body>
+    </html>
+  
